@@ -3,31 +3,48 @@ package linkedlist;
 import linkedlist.Link;
 
 public class LinkedList {
-	public Link firstLink;
-	public int listCount;
+	private Link firstLink;
+	private int listCount;
 	
 	public LinkedList() {
 		firstLink = null;
 		listCount = 0;
 	}
 	
+	/**
+	 * Determines whether or not the linked list is empty.
+	 * @return true if empty, false if not
+	 */
 	public boolean isEmpty() {
 		return listCount == 0;
 	}
 	
+	/**
+	 * Adds a new link with the input data to the head of the linked list.
+	 * @param data
+	 */
 	public void addToHead(Object data) {
-		Link newHead = new Link(data);
+	    Link newHead = new Link(data);
 		newHead.setNext(firstLink);
 		firstLink = newHead;
 		listCount++;
 	}
 	
+	/**
+	 * Adds the specified link to the head of the linked list.
+	 * @param newHead
+	 */
 	public void addLinkToHead(Link newHead) {
 		newHead.setNext(firstLink);
 		firstLink = newHead;
 		listCount++;
 	}
 	
+	/**
+	 * Creates a link containing the input data and 
+	 * adds it to the end of the linked list.
+	 * @param data
+	 */
 	public void addToEnd(Object data) {
 		Link newEnd = new Link(data);
 		Link current = firstLink;
@@ -39,6 +56,11 @@ public class LinkedList {
 		listCount++;
 	}
 	
+	/**
+	 * Adds a new link with the input data at the specified index in the list.
+	 * @param index
+	 * @param data
+	 */
 	public void add(int index, Object data) {
 		Link newLink = new Link(data);
 		Link current = firstLink;
@@ -51,6 +73,11 @@ public class LinkedList {
 		listCount++;
 	}
 	
+	/**
+	 * Removes the link at the specified index.
+	 * @param index
+	 * @return
+	 */
 	public boolean remove(int index) {
 		Link current = firstLink;
 		if(index > listCount) {
@@ -73,10 +100,16 @@ public class LinkedList {
 		return true;
 	}
 	
+	/**
+	 * Removes the head link of the linked list.
+	 */
 	public void removeHead() {
 		firstLink = firstLink.getNext();
 	}
 	
+	/**
+	 * Prints the contents of the linked list to the console.
+	 */
 	public void display() {
 		if(firstLink == null || firstLink.getData() == null) return;
 		Link currentLink = firstLink;
