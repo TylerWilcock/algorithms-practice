@@ -1,5 +1,62 @@
 package linkedlist;
 
-public class LinkedList {
+import linkedlist.Link;
 
+public class LinkedList {
+	public Link firstLink;
+	public int listCount;
+	
+	public LinkedList() {
+		firstLink = null;
+		listCount = 0;
+	}
+	
+	public boolean isEmpty() {
+		return listCount == 0;
+	}
+	
+	public void addToHead(Object data) {
+		Link newHead = new Link(data);
+		newHead.setNext(firstLink);
+		firstLink = newHead;
+		listCount++;
+	}
+	
+	public void addLinkToHead(Link newHead) {
+		newHead.setNext(firstLink);
+		firstLink = newHead;
+		listCount++;
+	}
+	
+	public void addToEnd(Object data) {
+		Link newEnd = new Link(data);
+		Link current = firstLink;
+		//crawl through the list to get to the end
+		while(current.getNext() != null) {
+			current = current.getNext();
+		}
+		current.setNext(newEnd);
+		listCount++;
+	}
+	
+	public void add(int index, Object data) {
+		Link newLink = new Link(data);
+		Link current = firstLink;
+		//crawl to the specified index or to the last element in the list, whichever comes first
+		for(int i = 1; i < index && current.getNext() != null; i++) {
+			current = current.getNext();
+		}
+		newLink.setNext(current.getNext());
+		current.setNext(newLink);
+		listCount++;
+	}
+	
+	public void display() {
+		if(firstLink == null || firstLink.getData() == null) return;
+		Link currentLink = firstLink;
+		while(currentLink != null) {
+			System.out.print("[" + currentLink.getData() + "]" + "-->");
+			currentLink = currentLink.getNext();
+		}
+	}
 }
