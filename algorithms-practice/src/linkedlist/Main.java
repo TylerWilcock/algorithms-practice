@@ -11,6 +11,7 @@ public class Main {
 		linkedList.addToHead("Third added");
 		linkedList.addToEnd("Should be at end");
 		linkedList.add(1, "Adding to index 1");
+		linkedList.remove(0);
 		linkedList.display();
 	}
 

@@ -51,6 +51,32 @@ public class LinkedList {
 		listCount++;
 	}
 	
+	public boolean remove(int index) {
+		Link current = firstLink;
+		if(index > listCount) {
+			return false;
+		} else if (index == 0) {
+			this.removeHead();
+		}
+		
+		current = firstLink;
+		//crawl through the list til we get to the specified element
+		for(int i = 1; i < index; i++) {
+			if(current.getNext() == null) {
+				return false;
+			}
+			
+			current = current.getNext();
+		}
+		current.setNext(current.getNext().getNext());
+		listCount--;
+		return true;
+	}
+	
+	public void removeHead() {
+		firstLink = firstLink.getNext();
+	}
+	
 	public void display() {
 		if(firstLink == null || firstLink.getData() == null) return;
 		Link currentLink = firstLink;
